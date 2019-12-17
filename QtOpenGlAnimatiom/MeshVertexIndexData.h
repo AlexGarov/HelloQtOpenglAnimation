@@ -1,15 +1,24 @@
 #pragma once
-#include<QOpenGLBuffer>
-#include <QOpenGLVertexArrayObject>
+
 
 #include "Bundler3Ddata.h"
+class MeshData;
+class VertexBuffer;
+
 class MeshVertexData
 {
-	//QOpenGLVertexArrayObject m_VAO;
-	QOpenGLBuffer m_vertexBuffer;//position,texture, normal 
-	//QOpenGLBuffer m_indexBuffer;
+	
 public:
-	 MeshVertexData* Create(const MeshData& meshdata);
+	 MeshVertexData(const MeshData& meshdata);
+	 ~MeshVertexData();
+	 void bind();//temp
+	 MeshVertexAttrib *getMeshVertexAttrib()const;
+	 int getVertexSize()const;
+	 VertexBuffer * getVertexBuffer()const;
+protected:
+	VertexBuffer* m_vertexBuffer;
+	MeshVertexAttrib* m_meshVertexAttrib;
+	int m_vertexSize;
 };
 
 
