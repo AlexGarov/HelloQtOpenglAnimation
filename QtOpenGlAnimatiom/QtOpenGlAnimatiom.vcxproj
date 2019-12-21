@@ -97,6 +97,7 @@
     <ClCompile Include="HelloCube.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="MeshCommand.cpp" />
     <ClCompile Include="MeshVertexIndexData.cpp" />
     <ClCompile Include="ModelWareHouse.cpp" />
     <ClCompile Include="MyModel3D.cpp" />
@@ -116,6 +117,7 @@
     <ClInclude Include="Global.h" />
     <ClInclude Include="HelloCube.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshCommand.h" />
     <ClInclude Include="MeshVertexIndexData.h" />
     <ClInclude Include="ModelShapStorage.h" />
     <ClInclude Include="ModelWareHouse.h" />

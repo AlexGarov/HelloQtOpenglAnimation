@@ -1,11 +1,18 @@
 #pragma once
+//#include <QOpenGLFunctions>
+#include"MeshCommand.h"
+class MeshVertexData;
 class VertexBuffer;
 class Mesh
 {
 public:
-	Mesh(VertexBuffer* vertexBuffer);
+	Mesh(MeshVertexData* meshVertexData);
+	
 	~Mesh();
-	void draw();// add to Model3
+	VertexBuffer* getVertexBuffer();
+
+	void draw(QOpenGLFunctions* glFuncs);// add to Model3
 protected:
-	VertexBuffer* m_vertexBuffer;//in fucther Verex Data
+	MeshVertexData* m_meshVertexData;//in fucther Verex Data
+	MeshCommand         m_meshCommand;
 };
