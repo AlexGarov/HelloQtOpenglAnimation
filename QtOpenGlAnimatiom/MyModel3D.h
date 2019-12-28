@@ -7,7 +7,7 @@ class MeshVertexData;
 class Mesh;
 class MyModel3D: public Node
 {
-	//VertexBuffer* vertexBuffer;
+	
 public:
 	MyModel3D(const QString& s,const float p[],int size);
 	virtual void draw(QOpenGLFunctions* glFuncs/*Renderer* renderer, const QMatrix4x4& transform, uint32_t flags*/)/*override*/;

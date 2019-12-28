@@ -16,10 +16,9 @@ MyModel3D::MyModel3D(const QString& s,const float p[], int size)
 void MyModel3D::draw(QOpenGLFunctions* glFuncs/*Renderer* renderer, const QMatrix4x4& transform, uint32_t flags*/)
 {
 	
-	g_mesh_t.m_shader_program.bind();
-	g_mesh_t.m_shader_program.setUniformValue("u_mvp", g_mesh_t.m_projectionMatrix * g_mesh_t.m_viewMatrix* m_model);
 	
-	m_mesh[0]->draw(glFuncs);
+	
+	m_mesh[0]->draw(glFuncs,_model);
 }
 
 void MyModel3D::init(const QString& s,const float p[],int size)

@@ -1,23 +1,27 @@
 #include "MeshCommand.h"
 #include"VertexIndexBuffer.h"
-#include "Global.h"
-extern struct MyMesh g_mesh_t;
+#include "Shader.h"
+
+//extern  QOpenGLShaderProgram g_shader_program;
 MeshCommand::MeshCommand()
 {
 }
 
-void MeshCommand::init(VertexBuffer* vertexBuffer)
+void MeshCommand::init(VertexBuffer* vertexBuffer, int vertexCount, QOpenGLTexture::PixelType type, int size, int attribSizeBytes/*, QMatrix4x4& model*/)
 {
 	m_vertexBuffer=vertexBuffer;
+	m_vertexCount= vertexCount ;
+	m_type= type ;
+	m_size= size ;
+	m_attribSizeBytes= attribSizeBytes ;
+	
 }
 
-void MeshCommand::draw(QOpenGLFunctions* glFuncs, int vertexCount, QOpenGLTexture::PixelType type, int size, int attribSizeBytes)
+void MeshCommand::draw(QOpenGLFunctions* glFuncs,QMatrix4x4& model)
 {
+	Shader::shaderMeshBind1(model);
 	m_vertexBuffer->bind();
-	int offset = 0;
-	int vertLoc = g_mesh_t.m_shader_program.attributeLocation("a_position");
-	g_mesh_t.m_shader_program.enableAttributeArray(vertLoc);
-	g_mesh_t.m_shader_program.setAttributeBuffer(vertLoc, type, offset,	size, attribSizeBytes);
-	glFuncs->glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+	Shader::shaderMeshBind2(m_type, m_size, m_attribSizeBytes);
+	glFuncs->glDrawArrays(GL_TRIANGLES, 0, m_vertexCount);
 
 }

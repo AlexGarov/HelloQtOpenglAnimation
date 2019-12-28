@@ -27,6 +27,6 @@ void Node::removeChild(Node* child)
 
 void Node::setTranslate(const QVector3D& m)
 {
-	model.setToIdentity();
-	m_model.translate(m);
+	_model.setToIdentity();
+	_model.translate(m);
 }

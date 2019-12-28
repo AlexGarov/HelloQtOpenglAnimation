@@ -4,12 +4,13 @@
 #include"ModelShapStorage.h"
 #include"MyModel3D.h"
 #include"Global.h"
+#include"Shader.h"
 #include<QOpenGLBuffer>
-#include<QOpenGLShaderProgram>
+//#include<QOpenGLShaderProgram>
 #include<QVector>
-void initCube();
-void initShader();
-void paintCube();
+//void initCube();
+//void initShader();
+//void paintCube();
 extern struct MyMesh g_mesh_t;
 /* struct Mymesh
 {
@@ -33,7 +34,7 @@ void Window3D::initializeGL()
 {
 	initializeOpenGLFunctions();
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	initShader();
+	Shader::initShader();
 	
 	Node *m=new MyModel3D(Cube_Texture::name, Cube_Texture::position_points, Cube_Texture::position_size);
 	m->setTranslate(QVector3D(-2, 0, 0));
@@ -74,30 +75,3 @@ void Window3D::paintGL()
 
 
 
-void initShader()
-{
-	if (!g_mesh_t.m_shader_program.addShaderFromSourceCode(QOpenGLShader::Vertex,
-		"attribute highp vec3 a_position;\n"
-      "uniform highp mat4 u_mvp;\n"
-      "void main(void)\n"
-      "{\n"
-      "   gl_Position = u_mvp * vec4(a_position,1);\n"
-		"}"))
-	{
-
-		qDebug() << "QOpenGLShader::Vertex";
-	}
-	if (!g_mesh_t.m_shader_program.addShaderFromSourceCode(QOpenGLShader::Fragment,		
-      "void main(void)\n"
-      "{\n"
-      "   gl_FragColor = vec4(1,0,0,1);\n"
-		"}"))
-		qDebug() << "QOpenGLShader::Fragment";
-
-		if (!g_mesh_t.m_shader_program.link())
-		{
-			qDebug() << "link";
-			
-		}
-		
-}

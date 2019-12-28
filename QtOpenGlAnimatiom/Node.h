@@ -4,7 +4,7 @@ class Renderer;
 class QOpenGLFunctions;
 class Node
 {
-	QMatrix4x4 model;
+	
 public:
 	virtual void draw(QOpenGLFunctions* glFuncs/*Renderer* renderer, const QMatrix4x4& transform, uint32_t flags*/);
 	virtual void addChild(Node* child);
@@ -13,6 +13,6 @@ public:
 protected:
 	QVector<Node*> _children;        ///< array of children nodes
 	Node* _parent;
-	QMatrix4x4 m_model;
+	QMatrix4x4 _model;
 };
 
