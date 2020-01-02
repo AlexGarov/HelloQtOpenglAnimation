@@ -16,7 +16,7 @@ MyModel3D::MyModel3D(const QString& s,const float p[], int size)
 void MyModel3D::draw(QOpenGLFunctions* glFuncs/*Renderer* renderer, const QMatrix4x4& transform, uint32_t flags*/)
 {	
 	m_mesh[0]->draw(glFuncs,_model);
-	m_mesh[0]->m_meshCommand;
+	
 }
 
 void MyModel3D::init(const QString& s,const float p[],int size)
