@@ -14,9 +14,10 @@ public:
 private:
 	void init(const QString& s,const float p[], int size);
 	void meshCreate();
-protected:
+public:
 	QVector<MeshVertexData*> m_meshVertexData;
 
 	QVector<Mesh*> m_mesh;
+	Mesh* _mesh = nullptr;
 };
 

@@ -10,9 +10,12 @@ public:
 	virtual void addChild(Node* child);
 	virtual void removeChild(Node* child/*, bool cleanup = true*/);
 	virtual void setTranslate(const QVector3D& m);
-protected:
+	virtual bool init();
+	virtual void visit(QOpenGLFunctions* glFuncs);
+
 	QVector<Node*> _children;        ///< array of children nodes
 	Node* _parent;
 	QMatrix4x4 _model;
+	//QVector<Mesh * > m_mesh;
 };
 

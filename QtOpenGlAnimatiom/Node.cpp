@@ -30,3 +30,16 @@ void Node::setTranslate(const QVector3D& m)
 	_model.setToIdentity();
 	_model.translate(m);
 }
+
+bool Node::init()
+{
+	return true;
+}
+
+void Node::visit(QOpenGLFunctions* glFuncs)
+{
+	for (QVector<Node*>::iterator i = _children.begin(); i != _children.end(); ++i)
+	{
+		(*i)->draw(glFuncs);
+	}
+}

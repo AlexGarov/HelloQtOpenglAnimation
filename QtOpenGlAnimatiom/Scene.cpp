@@ -1,5 +1,13 @@
 #include "Scene.h"
 
-//void Scene::draw(Renderer* renderer, const QMatrix4x4& transform, uint32_t flags)
-//{
-//}
+
+
+bool Scene::init()
+{
+	return true;
+}
+
+void Scene::render(QOpenGLFunctions* glFuncs)
+{
+	this->visit(glFuncs);
+}

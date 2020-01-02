@@ -95,6 +95,7 @@
     <ClCompile Include="Bundler3Ddata.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="HelloCube.cpp" />
+    <ClCompile Include="HellowWorld.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MeshCommand.cpp" />
@@ -117,6 +118,7 @@
     <ClInclude Include="Bundler3Ddata.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="HelloCube.h" />
+    <ClInclude Include="HellowWorld.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshCommand.h" />
     <ClInclude Include="MeshVertexIndexData.h" />

@@ -7,7 +7,10 @@ MeshCommand::MeshCommand()
 {
 }
 
-void MeshCommand::init(VertexBuffer* vertexBuffer, int vertexCount, QOpenGLTexture::PixelType type, int size, int attribSizeBytes/*, QMatrix4x4& model*/)
+void MeshCommand::init(VertexBuffer* vertexBuffer,
+						int vertexCount, QOpenGLTexture::PixelType type,
+						int size, int attribSizeBytes
+						/*, QMatrix4x4& model*/)
 {
 	m_vertexBuffer=vertexBuffer;
 	m_vertexCount= vertexCount ;
@@ -24,4 +27,9 @@ void MeshCommand::draw(QOpenGLFunctions* glFuncs,QMatrix4x4& model)
 	Shader::shaderMeshBind2(m_type, m_size, m_attribSizeBytes);
 	glFuncs->glDrawArrays(GL_TRIANGLES, 0, m_vertexCount);
 
+}
+
+MeshCommand* MeshCommand::getMeshCommand() 
+{
+	return this;
 }
