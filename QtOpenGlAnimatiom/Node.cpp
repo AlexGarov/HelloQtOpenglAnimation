@@ -38,8 +38,15 @@ bool Node::init()
 
 void Node::visit(QOpenGLFunctions* glFuncs)
 {
-	for (QVector<Node*>::iterator i = _children.begin(); i != _children.end(); ++i)
+	if (!_children.empty())
 	{
-		(*i)->draw(glFuncs);
+		this->draw(glFuncs);
+		for (auto it = _children.cbegin(), itCend = _children.cend(); it != itCend; ++it)
+			(*it)->visit(glFuncs);
 	}
+	else
+	{
+		this->draw(glFuncs);
+	}
+	
 }

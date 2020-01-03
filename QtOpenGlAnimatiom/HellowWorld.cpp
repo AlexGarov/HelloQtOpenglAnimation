@@ -17,6 +17,10 @@ bool HellowWorld::init()
 	this->addChild(modelCube);
 
 	MyModel3D *triangle= new MyModel3D(Triangle::name, Triangle::position_points, Triangle::position_size);
-	triangle->setTranslate(QVector3D(2, 0, 0));
-	this->addChild(triangle);
+	triangle->setTranslate(QVector3D(0, 0, 0));
+	modelCube->addChild(triangle);
+
+	MyModel3D* triangle2 = new MyModel3D(Triangle::name, Triangle::position_points, Triangle::position_size);
+	triangle2->setTranslate(QVector3D(2, 0, 0));
+	triangle->addChild(triangle2);
 }

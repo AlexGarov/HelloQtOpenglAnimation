@@ -19,13 +19,27 @@ void MyModel3D::draw(QOpenGLFunctions* glFuncs/*Renderer* renderer, const QMatri
 	
 }
 
+void MyModel3D::visit(QOpenGLFunctions* glFuncs)
+{
+	if (!_children.empty())
+	{
+		this->draw(glFuncs);
+		for (auto it = _children.cbegin(), itCend = _children.cend(); it != itCend; ++it)
+			(*it)->visit(glFuncs);
+	}
+	else
+	{
+		this->draw(glFuncs);
+	}
+}
+
 void MyModel3D::init(const QString& s,const float p[],int size)
 {
 	MeshDatas* meshdatas = new (std::nothrow) MeshDatas;
 	Bundler3D::loadObj(*meshdatas, s, p, size);
 	for (auto& meshdata : meshdatas->meshDatas)
 	{
-		//vertexBuffer = new VertexBuffer(meshdata->vertex.constData(), meshdata->vertex.size() * sizeof(float));
+		
 		MeshVertexData* meshVertexData = new MeshVertexData(*meshdata);
 		m_meshVertexData.push_back(meshVertexData);
 	}
